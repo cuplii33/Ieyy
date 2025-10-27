@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bunga Muncul dari Bawah</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f8d7e5; /* pink lembut */
+      position: relative;
+    }
+
+    .bunga {
+      position: absolute;
+      bottom: -80px;
+      font-size: 60px; /* bunga besar */
+      animation: naik 3s ease-out forwards;
+    }
+
+    @keyframes naik {
+      0% { bottom: -80px; opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; }
+      100% { bottom: 80%; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  function munculkanBunga() {
+    for (let i = 0; i < 5; i++) { // munculkan 5 bunga sekaligus
+      const bunga = document.createElement('div');
+      bunga.className = 'bunga';
+
+      // Pilih emoji bunga secara acak
+      const jenisBunga = ['🌸', '🌷', '🌼', '🌻'];
+      bunga.textContent = jenisBunga[Math.floor(Math.random() * jenisBunga.length)];
+
+      bunga.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(bunga);
+
+      setTimeout(() => bunga.remove(), 4000);
+    }
+  }
+
+  setInterval(munculkanBunga, 800); // lebih sering muncul
+</script>
+
+</body>
+</html>
